@@ -1,176 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetec 2026</title>
-    <style>
-        :root {
-			--blank: #F8E3C4;
-		  
-			--peach-blush: #E9A8AD;
-			--rose-warm: #DC6E9F;
-			
-			--pink: #CC3495;
-			
-			--magenta-deep: #AB2DAE;
-			--violet-royal: #8B26C0;
-		  
-			--purple: #6B1FB1;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>INFOTEC - Informática para Internet</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <!--https://www.dafont.com/pt/theme.php?cat=303-->
+    <body>
+        <!--Pode roubar código daqui bryan bryan-->
+        <!-- https://github.com/fetecdarcy/infotec2025/blob/main/index.html  -->
+        <!--https://fetecdarcy.github.io/infotec2025/ -->
+        <header>
+            <img src="assets/infotec.svg" alt="logo_image" id="logo" />
+            <nav id="pages_menu">
+                <a href="html/course.html" id="btn_course" class="head_btn"
+                    >Curso</a
+                >
+                <a href="html/expo.html" id="btn_exp" class="head_btn"
+                    >Exposições</a
+                >
+                <a href="html/contact.html" id="btn_contact" class="head_btn"
+                    >Contato</a
+                >
+                <a href="html/credits.html" id="btn_credits" class="head_btn"
+                    >Créditos</a
+                >
+            </nav>
+            <button id="theme-toggle">Dark Mode Placeholder</button>
+            <!-- o coisinha do dark mode é um placeholder, vamos por uma imagem -->
+        </header>
+        <div id="ps3_bg">
+            <div id="title">
+                <h1>FETEC</h1>
+            </div>
+            <div id="coolass_mid">
+                <div id="cool_part1">
+                    <div id="descrp">
+                        <h1>O que é a <bold>FETEC</bold>?</h1>
+                        <h2>
+                            A FETEC é um evento promovido pela Etec Darcy
+                            Pereira de Moraes (Itapetininga - SP) e conta com a
+                            participação dos Professores e Alunos para exposição
+                            de projetos, experimentos e apresentações. Este site
+                            foi desenvolvido pelos alunos do 2º ano do curso
+                            Ensino Médio integrado ao Técnico em Informática
+                            para Internet, de modo a proporcionar ao público uma
+                            "exposição virtual" dos Projetos e Jogos
+                            desenvolvidos no decorrer do ano.
+                        </h2>
+                    </div>
+                </div>
+                <div id="cool_part2">
+                    modelo 3d giratório
+                    <canvas
+                        id="3dmodel_window"
+                        width="128"
+                        height="128"
+                    ></canvas>
+                </div>
+            </div>
+        </div>
 
-			--indigo-dark: #4B1786;
-			--navy-deep: #2B0F5B;
-			
-			--black: #0B0630;
-        }
+        <hr/> <!-- placeholder -->
 
-        @font-face {
-            font-family: 'Ethno'; 
-            src: url('fonts/ethnocentric/Ethnocentric-Regular.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-        }
+        <div id="cards">
+            <div class="cardy">
+                <img src="assets/scratch.jpg" alt="scratch">
+                <h3>Scratch</h3>
+                <p>Jogos diversos desenvolvidos no Scratch</p>
+                <a>Saiba mais</a>
+            </div>
+            <div class="cardy">
+                <img src="assets/music_game.png" alt="musicasyeyy">
+                <h3>Qual é a Música?</h3>
+                <p>Projeto interativo que desafia os participantes a identificarem músicas.</p>
+                <a>Saiba mais</a>
+            </div>
+            <div class="cardy">
+                <img src="assets/music_game.png" alt="musicasyeyy">
+                <h3>Qual é a Música?</h3>
+                <p>Projeto interativo que desafia os participantes a identificarem músicas.</p>
+                <a>Saiba mais</a>
+            </div>
+        </div>
 
-        @font-face {
-            font-family: 'StarJedi'; 
-            src: url('fonts/star_jedi/stjelogo/Stjldbl1.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        /*
-        ajudai me a fazer a estrutura do site pls pls
-        procuro oq agr???
-        */   
-        body {
-            background-color: var(--navy-deep);
-            font-family: 'Ethno';
-			margin: 0px;
-			padding: 0px;
-        }
+        <footer>
+            <p>
+                &copy; 2026
+                <img src="assets/infotec.svg" alt="logo_image" id="logo" />
+                - Todos os direitos reservados.
+            </p>
+            <div class="social-icons">
+                <a
+                    href="https://www.facebook.com/etec.darcy.pereira.de.moraes.2025"
+                    ><i class="face_icon"></i>Facebook</a
+                >
+                <a
+                    href="https://www.instagram.com/etecdarcypereira?igsh=MWdubDEwOGNnMWJpcw=="
+                    ><i class="inst_icon"></i>Shitgram</a
+                >
+            </div>
+        </footer>
 
-        #logo {
-            width: 150px;
-        }
-		
-		#coolass_mid {
-			display: flex;
-			justify-content: center;
-			align-items: stretch;
-			margin: 1%;
-			background-color: #ff0000;
-			height: 70vh;
-		}
-		
-		#cool_part1 {
-			margin: 1%;
-			flex: 1;
-			background-color: #00ff00;
-		}
-		
-		#cool_part2 {
-			margin: 1%;
-			flex: 1;
-			background-color: #0000ff;
-		}
-		
-		#3dmodel_window {
-			width: 100%;
-			height: 100%;
-			display: block;
-		}
-		
-		#title h1 {
-			text-align: center;
-			font-size: clamp(1.5vw, 2.5vw,40px);
-			color: var(--blank);
-		}
-
-        #descrp {
-            width: 100%;
-        }
-
-        #descrp h2 {
-            color: var(--peach-blush);
-			/* melhore essa coisa */
-            font-size: clamp(1vw, 2vw, 16px);
-			text-align: center;
-        }
-
-        .head_btn {
-            text-decoration: none;
-            color: var(--blank);
-			transition: 0.2s ease;
-        }
-		
-		.head_btn:hover {
-			color: var(--pink);
-			transform: scale(1.1);
-			display: inline-block;
-		}
-
-        header {
-            background-color: var(--black);
-            color: #fff;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-		
-		#pages_menu {
-			width: 50%;
-			font-size: 1.5vw;
-			display: flex;
-			justify-content: space-between;
-		}
-
-
-    </style>
-</head>
-<!--https://www.dafont.com/pt/theme.php?cat=303-->
-<body>
-    <!--Pode roubar código daqui bryan bryan-->
-    <!-- https://github.com/fetecdarcy/infotec2025/blob/main/index.html  -->
-    <!--https://fetecdarcy.github.io/infotec2025/ -->
-    <header>
-        <img src="assets/infotec.svg" alt="load_image" id="logo">
-        <nav id="pages_menu">
-            <a href="html/course.html" id="btn_course" class="head_btn">Curso</a>
-            <a href="html/expo.html" id="btn_exp" class="head_btn">Exposições</a>
-            <a href="html/contact.html" id="btn_contact" class="head_btn">Contato</a>
-            <a href="html/credits.html" id="btn_credits" class="head_btn">Créditos</a>
-        </nav>
-        <button id="theme-toggle">Dark Mode Placeholder</button>
-		<!-- o coisinha do dark mode é um placeholder, vamos por uma imagem -->
-    </header>
-	
-	<div id="coolass_mid">
-		<div id="cool_part1">
-			<div id="title">
-				<h1>FETEC</h1>
-			</div>
-			
-			<div id="descrp">
-				<h2>
-					A FETEC é um evento promovido pela Etec Darcy Pereira de Moraes (Itapetininga - SP) e conta com a participação dos Professores e Alunos para exposição de projetos, experimentos e apresentações.
-					Este site foi desenvolvido pelos alunos do 2º ano do curso Ensino Médio integrado ao Técnico em Informática para Internet, de modo a proporcionar ao público uma "exposição virtual" dos Projetos e Jogos desenvolvidos no decorrer do ano.
-				</h2>
-			</div>
-		</div>
-		<div id="cool_part2">
-			<canvas id="3dmodel_window" width="128" height="128"></canvas>
-		</div>
-	</div>
-	
-	<script>
-		window.addEventListener('load', () => {
-			const gameWindow = document.getElementById("3dmodel_window");
-			gameWindow.width = gameWindow.clientWidth;
-			gameWindow.height = gameWindow.clientHeight;
-			console.log("Jeremy Jankles!");
-		});
-	</script>
-</body>
+        <script>
+            window.addEventListener("load", () => {
+                const gameWindow = document.getElementById("3dmodel_window");
+                gameWindow.width = gameWindow.clientWidth;
+                gameWindow.height = gameWindow.clientHeight;
+                console.log("Jeremy Jankles!");
+            });
+        </script>
+    </body>
 </html>

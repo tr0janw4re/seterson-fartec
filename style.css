@@ -1,0 +1,194 @@
+:root {
+    --blank: #f8e3c4;
+
+    --peach-blush: #e9a8ad;
+    --rose-warm: #dc6e9f;
+
+    --pink: #cc3495;
+
+    --magenta-deep: #ab2dae;
+    --violet-royal: #8b26c0;
+
+    --purple: #6b1fb1;
+
+    --indigo-dark: #4b1786;
+    --navy-deep: #2b0f5b;
+
+    --black: #0b0630;
+}
+
+@font-face {
+    font-family: "Ethno";
+    src: url("fonts/ethnocentric/Ethnocentric-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "StarJedi";
+    src: url("fonts/star_jedi/stjelogo/Stjldbl1.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "HemiHead";
+    src: url("fonts/hemi_head/HemiHead-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+/*
+ajudai me a fazer a estrutura do site pls pls
+procuro oq agr???
+*/
+body {
+    background-color: var(--navy-deep);
+    font-family: "Ethno";
+    margin: 0px;
+    padding: 0px;
+}
+
+#logo {
+    width: 150px;
+}
+
+#ps3_bg {
+    background-color: var(--pink);
+    padding-bottom: 1vw;
+}
+
+#coolass_mid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin: 1%;
+    background-color: #ff0000;
+    height: 70vh;
+}
+
+#cool_part1 {
+    margin: 1%;
+    flex: 1;
+    background-color: #00ff00;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cool_part2 {
+    margin: 1%;
+    flex: 1;
+    background-color: #0000ff;
+}
+
+#3dmodel_window {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title h1 {
+    font-size: 3.5vw;
+    color: var(--blank);
+    transition: 0.5s ease;
+}
+
+#title h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 3px var(--magenta-deep);
+}
+
+#descrp {
+    width: 100%;
+}
+
+#descrp h1 {
+    font-size: 2vw;
+}
+
+#descrp h2 {
+    /* melhore essa coisa */
+    font-size: 1.2vw;
+    width: 80%;
+}
+
+.head_btn {
+    text-decoration: none;
+    color: var(--blank);
+    transition: 0.4s ease;
+}
+
+.head_btn:hover {
+    color: var(--pink);
+    transform: scale(1.1);
+    display: inline-block;
+}
+
+header {
+    background-color: var(--black);
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pages_menu {
+    width: 50%;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardy {
+    font-family: "HemiHead";
+    background-color: #ff0000;
+    display: flex;
+    flex-direction: column;
+    min-width: 20%;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    margin: 1vw;
+    height: 80%;
+}
+
+.cardy img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cardy h3 {
+    font-size: 200%;
+    height: 50%;
+}
+
+.cardy p {
+    font-size: 100%;
+    text-align: center;
+    width: 80%;
+}
