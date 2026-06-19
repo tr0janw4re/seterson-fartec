@@ -6,11 +6,22 @@
     <title>Fetec 2026</title>
     <style>
         :root {
-            /*sintam se livres em mudar a cor aaaa*/
-            --blank : #F8E3C4;
-            --pink: #CC3495;
-            --purple: #6B1FB1; 
-            --black: #0B0630;
+			--blank: #F8E3C4;
+		  
+			--peach-blush: #E9A8AD;
+			--rose-warm: #DC6E9F;
+			
+			--pink: #CC3495;
+			
+			--magenta-deep: #AB2DAE;
+			--violet-royal: #8B26C0;
+		  
+			--purple: #6B1FB1;
+
+			--indigo-dark: #4B1786;
+			--navy-deep: #2B0F5B;
+			
+			--black: #0B0630;
         }
 
         @font-face {
@@ -31,38 +42,89 @@
         procuro oq agr???
         */   
         body {
-            background-color: var(--black);
+            background-color: var(--navy-deep);
             font-family: 'Ethno';
+			margin: 0px;
+			padding: 0px;
         }
 
         #logo {
             width: 150px;
         }
+		
+		#coolass_mid {
+			display: flex;
+			justify-content: center;
+			align-items: stretch;
+			margin: 1%;
+			background-color: #ff0000;
+			height: 70vh;
+		}
+		
+		#cool_part1 {
+			margin: 1%;
+			flex: 1;
+			background-color: #00ff00;
+		}
+		
+		#cool_part2 {
+			margin: 1%;
+			flex: 1;
+			background-color: #0000ff;
+		}
+		
+		#3dmodel_window {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+		
+		#title h1 {
+			text-align: center;
+			font-size: clamp(1.5vw, 2.5vw,40px);
+			color: var(--blank);
+		}
 
         #descrp {
-            width: 80%
+            width: 100%;
         }
 
         #descrp h2 {
-            color: var(--blank);
-            font-size: 20px;
+            color: var(--peach-blush);
+			/* melhore essa coisa */
+            font-size: clamp(1vw, 2vw, 16px);
+			text-align: center;
         }
 
         .head_btn {
             text-decoration: none;
             color: var(--blank);
+			transition: 0.2s ease;
         }
+		
+		.head_btn:hover {
+			color: var(--pink);
+			transform: scale(1.1);
+			display: inline-block;
+		}
 
         header {
-            background-color: var();
+            background-color: var(--black);
             color: #fff;
             padding: 1rem;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
             flex-wrap: wrap;
             position: relative;
         }
+		
+		#pages_menu {
+			width: 50%;
+			font-size: 1.5vw;
+			display: flex;
+			justify-content: space-between;
+		}
 
 
     </style>
@@ -74,26 +136,41 @@
     <!--https://fetecdarcy.github.io/infotec2025/ -->
     <header>
         <img src="assets/infotec.svg" alt="load_image" id="logo">
-        <nav id="nav-menu">
+        <nav id="pages_menu">
             <a href="html/course.html" id="btn_course" class="head_btn">Curso</a>
             <a href="html/expo.html" id="btn_exp" class="head_btn">Exposições</a>
             <a href="html/contact.html" id="btn_contact" class="head_btn">Contato</a>
             <a href="html/credits.html" id="btn_credits" class="head_btn">Créditos</a>
         </nav>
-        <button id="theme-toggle" class="theme-toggle">Dark Mode Placeholder</button>
+        <button id="theme-toggle">Dark Mode Placeholder</button>
+		<!-- o coisinha do dark mode é um placeholder, vamos por uma imagem -->
     </header>
-    <div id="title">
-        <h1>
-
-        </h1>
-    </div>
-
-    <div id="descrp">
-        <h2>
-            A FETEC é um evento promovido pela Etec Darcy Pereira de Moraes (Itapetininga - SP) e conta com a participação dos Professores e Alunos para exposição de projetos, experimentos e apresentações.
-            Este site foi desenvolvido pelos alunos do 2º ano do curso Ensino Médio integrado ao Técnico em Informática para Internet, de modo a proporcionar ao público uma "exposição virtual" dos Projetos e Jogos desenvolvidos no decorrer do ano.
-        </h2>
-    </div>
-
+	
+	<div id="coolass_mid">
+		<div id="cool_part1">
+			<div id="title">
+				<h1>FETEC</h1>
+			</div>
+			
+			<div id="descrp">
+				<h2>
+					A FETEC é um evento promovido pela Etec Darcy Pereira de Moraes (Itapetininga - SP) e conta com a participação dos Professores e Alunos para exposição de projetos, experimentos e apresentações.
+					Este site foi desenvolvido pelos alunos do 2º ano do curso Ensino Médio integrado ao Técnico em Informática para Internet, de modo a proporcionar ao público uma "exposição virtual" dos Projetos e Jogos desenvolvidos no decorrer do ano.
+				</h2>
+			</div>
+		</div>
+		<div id="cool_part2">
+			<canvas id="3dmodel_window" width="128" height="128"></canvas>
+		</div>
+	</div>
+	
+	<script>
+		window.addEventListener('load', () => {
+			const gameWindow = document.getElementById("3dmodel_window");
+			gameWindow.width = gameWindow.clientWidth;
+			gameWindow.height = gameWindow.clientHeight;
+			console.log("Jeremy Jankles!");
+		});
+	</script>
 </body>
 </html>
