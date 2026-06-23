@@ -54,7 +54,7 @@
                 <div id="cool_part2">
                     modelo 3d giratório
                     <canvas
-                        id="3dmodel_window"
+                        id="3dproj"
                         width="128"
                         height="128"
                     ></canvas>
@@ -106,10 +106,11 @@
         <script>
             window.addEventListener("load", () => {
                 const gameWindow = document.getElementById("3dmodel_window");
-                gameWindow.width = gameWindow.clientWidth;
-                gameWindow.height = gameWindow.clientHeight;
+                //gameWindow.width = gameWindow.clientWidth;
+                //gameWindow.height = gameWindow.clientHeight;
                 console.log("Jeremy Jankles!");
             });
         </script>
+		<script src="./js/3d/3D_engine.js"></script>
     </body>
 </html>

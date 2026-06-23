@@ -1,3 +1,2 @@
-# SETERSON FARTEC
-
+# seterson
 site bomba
