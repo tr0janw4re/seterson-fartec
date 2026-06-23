@@ -12,8 +12,8 @@
 */
 
 const canvas = document.getElementById("3dproj");
-canvas.width = 240;
-canvas.height = 136;
+canvas.width = 240; //720
+canvas.height = 136; //408
 const ctx = canvas.getContext('2d');
 
 ctx.imageSmoothingEnabled = false;
@@ -29,7 +29,8 @@ class Input {
 		this.up = false; this.right = false;
 		
 		this.a = false; this.b = false;
-		this.x = false; this.y = false;
+		this.x = false; this.y = false; this.x_2 = false;
+		this.reload = false;
 		
 		this.start = false; this.select = false;
 	}
@@ -71,9 +72,19 @@ class Input {
 			keys[this.keylist.x] ===false
 			? false
 			: true;
+		this.x_2 =
+			keys[this.keylist.x_2] === undefined ||
+			keys[this.keylist.x_2] ===false
+			? false
+			: true;
 		this.y =
 			keys[this.keylist.y] === undefined ||
 			keys[this.keylist.y] ===false
+			? false
+			: true;
+		this.reload =
+			keys[this.keylist.reload] === undefined ||
+			keys[this.keylist.reload] ===false
 			? false
 			: true;
 		
@@ -105,7 +116,7 @@ class Camera {
 class Cursor {
 	constructor(x, y, z) {
 		this.x = x; this.y = y; this.z = z;
-		this.tempTri = {}; this.tempColor = colors["BLACK"];
+		this.tempTri = {}; this.tempColor = "BLACK";
 		this.tempTriList = []; this.pointCount = 0;
 		this.lastSavedPos = {};
 	}
@@ -127,6 +138,8 @@ let inputKeys = {
 	a: "k",
 	b: "j",
 	x: "i",
+	x_2: "o",
+	reload: "r",
 	y: "u",
 	select: "shift",
 	start: "enter"
@@ -134,9 +147,9 @@ let inputKeys = {
 let input = new Input(inputKeys);
 //0 - move, 1 - build
 
-let mapChunks = {}; 
-let triMap = {}; 
-let renderMap = {};
+let mapChunks = []; 
+let triMap = []; 
+let renderMap = [];
 
 let shpBluePrint = {
 	cube : [
@@ -154,6 +167,7 @@ let angleBtnPressed = false;
 let angleBtnMode = 1;
 let changeBtnPressed = false;
 let setBtnPressed = false;
+let reloadPress = false;
 
 let state = 0;
 let colors = {
@@ -164,15 +178,19 @@ let colors = {
 	BLUE:"#29ADFF",CLAY:"#83769C",PINK:"#FF77A8",
 	PEACH:"#FFCCAA"
 }
-let camera = {};
-let cursor = {};
+let camera = 0;
+let cursor = 0;
 
 let lastTime = 0;
 
 async function _init() {
-	camera = new Camera(0, 0, 0);
-	cursor = new Cursor(0, 0, 0);
-	mapChunks = await loadJSON("./data/3dmodels/turtle.json");
+	if (camera===0) {
+		camera = new Camera(0, 0, 0);
+	}
+	if (cursor===0) {
+		cursor = new Cursor(0, 0, 0);
+	}
+	mapChunks = await loadJSON("./data/3dmodels/turtle2.json");
 }
 
 function _update(deltaTime) {
@@ -260,10 +278,10 @@ function _update(deltaTime) {
 	if (input.x) {
 		switch(mode) {
 			case 0:
-				angleBtnPressed = true;
-				//if (camera.angleX > -80) {
-					camera.angleX += (2*angleBtnMode);
-				//}
+				//angleBtnPressed = true;
+				if (camera.angleX < 80) {
+					camera.angleX += 2;
+				}
 				break;
 			case 1:
 				if (!setBtnPressed) {
@@ -284,7 +302,7 @@ function _update(deltaTime) {
 							cursor.tempTri.z3 = cursor.z;
 							cursor.tempTriList.push(cursor.tempTri);
 							triMap = convShapes(cursor, mapChunks);
-							cursor.pointCount=0;
+							cursor.pointCount=-1;
 							cursor.tempTri = {};
 							break;
 					}
@@ -304,6 +322,22 @@ function _update(deltaTime) {
 	} else if (!input.x && mode==1 && setBtnPressed) {
 		setBtnPressed = false;
 	}
+	if (input.x_2) {
+		switch(mode) {
+			case 0:
+				if (camera.angleX > -80) {
+					camera.angleX -= 2;
+				}
+		}
+	}
+	if (input.reload) {
+		if (!reloadPress) {
+			reloadJSON();
+			reloadPress = true;
+		}
+	} else {
+		if (reloadPress) {reloadPress = false;}
+	}
 	if (input.y) {
 		changeBtnPressed = true;
 	} else if (!input.y && changeBtnPressed) {
@@ -318,7 +352,8 @@ function _draw() {
 	ctx.fillStyle = colors["BLUE"];
 	ctx.fillRect(0,0,gameScreen.width,gameScreen.height);
 	ctx.fillStyle = "#FFFFFF";
-	geminiFloor();
+	geminiFloor(camera);
+	//drawLine(0,0,canvas.width,canvas.height);
 	drawTri(camera, renderMap);
 	drawDot(camera);
 	if (projectProp.devMode) {
@@ -359,6 +394,13 @@ function _loop() {
 }
 
 //OTHER FUNCTIONS
+
+function reloadJSON() {
+	_init().then(() => {
+		triMap = convShapes(cursor, mapChunks);
+		console.log(triMap.length);
+	});
+}
 async function loadJSON(jsonPath) {
 	let path = jsonPath;
 	if (jsonPath[0]+jsonPath[1]!=="./") {
@@ -370,8 +412,13 @@ async function loadJSON(jsonPath) {
 }
 
 function project3D(cam, relPos, relZ, scrnSize, isH) {
-	relPos = relPos <= 0.01 ? 0.01 : relPos;
-	let factor = isH ? gameScreen.height / gameScreen.OGHeight : gameScreen.width / gameScreen.OGWidth;
+	let relZ_2 = Math.max(relZ,0.01);
+	let factor = 0;
+	if (isH) {
+		factor = scrnSize / gameScreen.OGHeight;
+	} else {
+		factor = scrnSize / gameScreen.OGWidth;
+	}
 	return (relPos * (cam.fov * factor)) / relZ + (scrnSize / 2);
 }
 
@@ -410,17 +457,17 @@ function renderUpdate(cam, tM, rM) {
 				x1:x1,y1:y1,z1:z1,
 				x2:x2,y2:y2,z2:z2,
 				x3:x3,y3:y3,z3:z3,
-				avZ:avgZ,color:tM[chk][tri]
+				avZ:avgZ,color:tM[chk][tri].color
 			}
 		}
 		rM[chk].sort((a,b) => {
-			return a.avZ - b.avZ;
+			return b.avZ - a.avZ;
 		});
 	}
 }
 
 function convShapes(curs, map) {
-	let render = {};
+	let render = [];
 	for (let chk=0; chk<map.length; chk++) {
 		render[chk] = [];
 		for (let shp=0; shp<map[chk].map.length; shp++) {
@@ -428,7 +475,6 @@ function convShapes(curs, map) {
 			let points = shp2.points;
 			function addTri(p1,p2,p3,col) {
 				let colr = col ? col : shp2.colors[0];
-				console.log(p1);
 				if (p1.color) {colr=p1.color;}
 				if (p2.color) {colr=p2.color;}
 				if (p3.color) {colr=p3.color;}
@@ -454,21 +500,40 @@ function convShapes(curs, map) {
 					}
 					break;
 			}
-			if (chk==1 && projectProp.devMode && curs.tempTriList.length>0) {
-				for (let t=0; t<curs.tempTriList.length; t++) {
-					let rawMap = curs.tempTriList[t];
-					render[chk].push({
-						x1:rawMap.x1, y1:rawMap.y1, z1:rawMap.z1,
-		  	  	   		x2:rawMap.x2, y2:rawMap.y2, z2:rawMap.z2,
-		  	  	   		x3:rawMap.x3, y3:rawMap.y3, z3:rawMap.z3,
-		  	  	   		avZ:0, color:rawMap.color
-					});
-				}
+		}
+		if (chk==0 && projectProp.devMode && curs.tempTriList.length>0) {
+			console.log("jeremy jankles")
+			for (let t=0; t<curs.tempTriList.length; t++) {
+				let rawMap = curs.tempTriList[t];
+				render[chk].push({
+					x1:rawMap.x1, y1:rawMap.y1, z1:rawMap.z1,
+		  	   		x2:rawMap.x2, y2:rawMap.y2, z2:rawMap.z2,
+		  	   		x3:rawMap.x3, y3:rawMap.y3, z3:rawMap.z3,
+		  	   		avZ:0, color:curs.tempColor
+				});
 			}
 		}
 	}
 	console.log(render);
 	return render;
+}
+
+function convTri(map) {
+	let shapes = [];
+	//console.log(map);
+	for (let i=0; i<map.length; i++) {
+		shapes[i] = {
+			shape: "polygon",
+			points: [
+				{x:map[i].x1,y:map[i].y1,z:map[i].z1},
+				{x:map[i].x2,y:map[i].y2,z:map[i].z2},
+				{x:map[i].x3,y:map[i].y3,z:map[i].z3}
+			],
+			colors: ["BLACK"]
+		}
+	}
+	//console.log(shapes);
+	return shapes;
 }
 
 function drawTri(cam, rM) {
@@ -499,43 +564,43 @@ function drawDot(cam) {
 	if (z>=0.01) {
 		let x_2 = project3D(cam,x,z,gameScreen.width);
 		let y_2 = project3D(cam,y,z,gameScreen.height,true);
-		drawFillCirc(x_2,y_2,3,"RED")
+		drawFillCirc(x_2,y_2,3,"RED",0,0,2*Math.PI);
 	}
 }
 
-function geminiFloor() {
+function geminiFloor(cam) {
 	let size = 200, step = 20;
-	for (let i=-size; i<size; i+=step) {
-		let [x1, y1, z1] = tranfPoint(i,40,-size);
-		let [x2, y2, z2] = tranfPoint(i,40,size);
-		let [x3, y3, z3] = tranfPoint(-size,40,i);
-		let [x4, y4, z4] = tranfPoint(size,40,i);
+	for (let i=-size; i<size+1; i+=step) {
+		let [x1, y1, z1] = tranfPoint(cam,i,40,-size);
+		let [x2, y2, z2] = tranfPoint(cam,i,40,size);
+		let [x3, y3, z3] = tranfPoint(cam,-size,40,i);
+		let [x4, y4, z4] = tranfPoint(cam,size,40,i);
 		
 		if (z1>0 && z2>0) {
 			drawLine(
-				project3D(x1,z1,gameScreen.width),
-				project3D(y1,z1,gameScreen.height,true),
-				project3D(x2,z2,gameScreen.width),
-				project3D(y2,z2,gameScreen.height,true),
+				project3D(cam,x1,z1,gameScreen.width),
+				project3D(cam,y1,z1,gameScreen.height,true),
+				project3D(cam,x2,z2,gameScreen.width),
+				project3D(cam,y2,z2,gameScreen.height,true),
 				"GRAY"
 			)
 		}
 		if (z3>0 && z4>0) {
 			drawLine(
-				project3D(x3,z3,gameScreen.width),
-				project3D(y3,z3,gameScreen.height,true),
-				project3D(x4,z4,gameScreen.width),
-				project3D(y4,z4,gameScreen.height,true),
+				project3D(cam,x3,z3,gameScreen.width),
+				project3D(cam,y3,z3,gameScreen.height,true),
+				project3D(cam,x4,z4,gameScreen.width),
+				project3D(cam,y4,z4,gameScreen.height,true),
 				"GRAY"
 			)
 		}
 	}
 }
 
-function drawFillCirc(x,y,rad,col) {
+function drawFillCirc(x,y,rad,col,rot,sA,eA) {
 	ctx.beginPath();
 	ctx.fillStyle = colors[col] ? colors[col] : "#000000";
-	ctx.ellipse(x,y,rad,rad);
+	ctx.ellipse(x,y,rad,rad,rot,sA,eA);
 	ctx.closePath();
 	ctx.fill();
 	ctx.fillStyle = "#FFFFFF";
@@ -555,12 +620,37 @@ function drawFillTri(x1,y1,x2,y2,x3,y3,col) {
 function drawLine(x1,y1,x2,y2,col) {
 	ctx.beginPath();
 	ctx.fillStyle = colors[col] ? colors[col] : "#000000";
-	ctx.setLineDash([]);
 	ctx.moveTo(x1,y1);
 	ctx.lineTo(x2,y2);
 	ctx.stroke();
 	ctx.closePath();
 	ctx.fillStyle = "#FFFFFF";
+}
+
+function export3DObj(curs) {
+	if (!curs) {
+		console.error("No Cursor was inserted");
+		return;
+	}
+	let cT = convTri(curs.tempTriList);
+	for (let i=0; i<cT.length; i++) {
+		mapChunks[0].map.push(cT[i]);
+	}
+	let jsonModel = JSON.stringify(mapChunks,null,2);
+	
+	const blob = new Blob([jsonModel], {type:"application/json"});
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	
+	const fileName = prompt("Insert a name for this model: ");
+	
+	a.href = url;
+	a.download = `${fileName}.json`;
+	document.body.appendChild(a);
+	a.click();
+	
+	document.body.removeChild(a);
+	URL.revokeObjectURL(url);
 }
 
 //event listeners

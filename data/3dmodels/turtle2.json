@@ -1,0 +1,124 @@
+ [
+	{
+		"x": 0, "y": 0, "z": 0,
+		"map": [
+			{
+				"_comment": "hand",
+				"shape": "polygon",
+				"points": [
+					{"x": 0, "y": 0, "z": 0},
+					{"x": 0, "y": -8, "z": 0},
+					{"x": 0, "y": -7, "z": -8},
+					
+					{"x": 0, "y": -7, "z": -8},
+					{"x": 0, "y": -1, "z": -8},
+					{"x": 0, "y": 0, "z": 0},
+					
+					{"x": 0, "y": 0, "z": 0, "color": "GREEN"},
+					{"x": -6, "y": 0, "z": 0, "color": "GREEN"},
+					{"x": 0, "y": -8, "z": 0, "color": "GREEN"},
+					
+					{"x": 0, "y": -8, "z": 0, "color": "GREEN"},
+					{"x": -6, "y": -8, "z": 0, "color": "GREEN"},
+					{"x": -6, "y": 0, "z": 0, "color": "GREEN"},
+					
+					{"x": -6, "y": 0, "z": 0, "color": "DARK_BLUE"},
+					{"x": -6, "y": -1, "z": -5, "color": "DARK_BLUE"},
+					{"x": -6, "y": -7, "z": -5, "color": "DARK_BLUE"},
+					
+					{"x": -6, "y": -7, "z": -5, "color": "DARK_BLUE"},
+					{"x": -6, "y": -8, "z": 0, "color": "DARK_BLUE"},
+					{"x": -6, "y": 0, "z": 0, "color": "DARK_BLUE"},
+					
+					{"x": -6, "y": -1, "z": -5, "color": "ORANGE"},
+					{"x": 0, "y": -1, "z": -6, "color": "ORANGE"},
+					{"x": 0, "y": -7, "z": -6, "color": "ORANGE"},
+					
+					{"x": 0, "y": -7, "z": -6, "color": "ORANGE"},
+					{"x": -6, "y": -7, "z": -5, "color": "ORANGE"},
+					{"x": -6, "y": -1, "z": -5, "color": "ORANGE"},
+					
+					{"x": 0, "y": -8, "z": 0, "color": "INDIGO"},
+					{"x": -6, "y": -8, "z": 0, "color": "INDIGO"},
+					{"x": -6, "y": -7, "z": -5, "color": "INDIGO"},
+					
+					{"x": -6, "y": -7, "z": -5, "color": "INDIGO"},
+					{"x": 0, "y": -7, "z": -6, "color": "INDIGO"},
+					{"x": 0, "y": -8, "z": 0, "color": "INDIGO"},
+					
+					{"x": 0, "y": 0, "z": 0, "color": "DARK_GREEN"},
+					{"x": -6, "y": 0, "z": 0, "color": "DARK_GREEN"},
+					{"x": -6, "y": -1, "z": -5, "color": "DARK_GREEN"},
+					
+					{"x": -6, "y": -1, "z": -5, "color": "DARK_GREEN"},
+					{"x": 0, "y": -1, "z": -6, "color": "DARK_GREEN"},
+					{"x": 0, "y": 0, "z": 0, "color": "DARK_GREEN"}
+				],
+				"colors": ["RED"]
+			},
+			{
+				"_comment": "finger",
+				"shape": "polygon",
+				"points": [
+					{"x": 0, "y": -7, "z": -5, "color": "INDIGO"},
+					{"x": 0, "y": -9, "z": -4.5, "color": "INDIGO"},
+					{"x": 0, "y": -7, "z": -3, "color": "INDIGO"},
+					
+					{"x": 0, "y": -9, "z": -4.5, "color": "INDIGO"},
+					{"x": 0, "y": -9, "z": -2.8, "color": "INDIGO"},
+					{"x": 0, "y": -7, "z": -3, "color": "INDIGO"},
+					
+					{"x": 0, "y": -9, "z": -2.8, "color": "GRAY"},
+					{"x": 0, "y": -9, "z": -4.5, "color": "GRAY"},
+					{"x": 0, "y": -11.5, "z": -3.9, "color": "GRAY"},
+					
+					{"x": 0, "y": -11.5, "z": -3.9, "color": "GRAY"},
+					{"x": 0, "y": -11.5, "z": -3.1, "color": "GRAY"},
+					{"x": 0, "y": -9, "z": -2.8, "color": "GRAY"},
+					
+					{"x": 0, "y": -7, "z": -3, "color": "BLACK"},
+					{"x": -2, "y": -7, "z": -2.8, "color": "BLACK"},
+					{"x": -2, "y": -9, "z": -2.8, "color": "BLACK"},
+					
+					{"x": -2, "y": -9, "z": -2.8, "color": "BLACK"},
+					{"x": 0, "y": -9, "z": -2.8, "color": "BLACK"},
+					{"x": 0, "y": -7, "z": -3, "color": "BLACK"},
+					
+					{"x": 0, "y": -9, "z": -2.8, "color": "PEACH"},
+					{"x": 0, "y": -11.5, "z": -3.1, "color": "PEACH"},
+					{"x": -1.2, "y": -11.5, "z": -2.8, "color": "PEACH"},
+					
+					{"x": -1.2, "y": -11.5, "z": -2.8, "color": "PEACH"},
+					{"x": -2, "y": -9, "z": -2.8, "color": "PEACH"},
+					{"x": 0, "y": -9, "z": -2.8, "color": "PEACH"},
+					
+					{"x": -2, "y": -7, "z": -2.8, "color": "CLAY"},
+					{"x": -2, "y": -9, "z": -2.8, "color": "CLAY"},
+					{"x": -2, "y": -7, "z": -5, "color": "CLAY"},
+					
+					{"x": -2, "y": -7, "z": -5, "color": "CLAY"},
+					{"x": -2, "y": -9, "z": -4.5, "color": "CLAY"},
+					{"x": -2, "y": -9, "z": -2.8, "color": "CLAY"},
+					
+					{"x": -2, "y": -9, "z": -4.5, "color": "WHITE"},
+					{"x": 0, "y": -9, "z": -4.5, "color": "WHITE"},
+					{"x": 0, "y": -7, "z": -5, "color": "WHITE"},
+					
+					{"x": 0, "y": -7, "z": -5, "color": "WHITE"},
+					{"x": -2, "y": -7, "z": -5, "color": "WHITE"},
+					{"x": -2, "y": -9, "z": -4.5, "color": "WHITE"},
+					
+					{"x": -2, "y": -9, "z": -4.5, "color": "DARK_BLUE"},
+					{"x": -1.2, "y": -11.5, "z": -3.9, "color": "DARK_BLUE"},
+					{"x": -1.2, "y": -11.5, "z": -2.8, "color": "DARK_BLUE"},
+					
+					{"x": -1.2, "y": -11.5, "z": -2.8, "color": "DARK_BLUE"},
+					{"x": -2, "y": -9, "z": -2.8, "color": "DARK_BLUE"},
+					{"x": -2, "y": -9, "z": -4.5, "color": "DARK_BLUE"}
+					
+				],
+				"colors": ["BLUE"]
+			}
+		]
+	}
+ ]
