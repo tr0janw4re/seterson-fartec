@@ -1,0 +1,75 @@
+@font-face {
+	font-family: "Ethno";
+    src: url("fonts/ethnocentric/Ethnocentric-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: "StarJedi";
+    src: url("fonts/star_jedi/stjelogo/Stjldbl1.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: "HemiHead";
+    src: url("fonts/hemi_head/HemiHead-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	background-color: var(--d-bg-color);
+	margin: 0;
+	padding: 0;
+	font-family: "HemiHead";
+}
+
+.squareSlide {
+	margin: 0;
+	padding: 0;
+	height: 92vh;
+	
+	background-image:
+		linear-gradient(45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+		linear-gradient(-45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, var(--d-secondary-color-alpha) 75%),
+		linear-gradient(-45deg, transparent 75%, var(--d-secondary-color-alpha) 75%);
+	
+	background-size: 60px 60px;
+	background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+	background-color: var(--d-bg-color);
+	animation: diagonal-mov 4s linear infinite;
+}
+
+@keyframes diagonal-mov {
+	from {
+		background-position: 0 0, 0 30px, 30px -30px, -30px 0;
+	}
+	
+	to {
+		background-position: 60px 60px, 60px 90px, 90px 30px, 30px 60px;
+	}
+}
+
+
+header {
+	background-color: var(--d-secondary-color);
+	height: 8vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	img {
+	    width: 12%;
+	    margin-left: 2%;
+	}
+	
+	a {
+	    text-decoration: none;
+	    margin: 0 15px;
+	    color: var(--d-text-body);
+	}
+	
+	button {
+	    margin-right: 2%
+	}
+	
+}

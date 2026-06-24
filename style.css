@@ -1,214 +1,179 @@
 :root {
-    --blank: #f8e3c4;
+  
+  /* light mode */
+  --l-primary-color: #F05050;
+  --l-secondary-color: #FBC4B6;
+  --l-bg-color: #FFFBFB;
+  --l-other-color: #FFFFFF;
+  --l-text-body: #3A2E2B;
 
-    --peach-blush: #e9a8ad;
-    --rose-warm: #dc6e9f;
+  /* dark mode */
+  --d-primary-color: #FF0033;
+  --d-secondary-color: #980038;
+  --d-bg-color: #1F0017;
+  --d-other-color: #520026;
+  --d-text-body: #FFFFFF;
 
-    --pink: #cc3495;
-
-    --magenta-deep: #ab2dae;
-    --violet-royal: #8b26c0;
-
-    --purple: #6b1fb1;
-
-    --indigo-dark: #4b1786;
-    --navy-deep: #2b0f5b;
-
-    --black: #0b0630;
+  --d-secondary-color-alpha: #98003880; /* 50% opacity */
 }
 
 @font-face {
-    font-family: "Ethno";
+  font-family: "Ethno";
     src: url("fonts/ethnocentric/Ethnocentric-Regular.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
-}
 
-@font-face {
     font-family: "StarJedi";
     src: url("fonts/star_jedi/stjelogo/Stjldbl1.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-}
 
-@font-face {
     font-family: "HemiHead";
     src: url("fonts/hemi_head/HemiHead-Bold.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
-/*
-ajudai me a fazer a estrutura do site pls pls
-procuro oq agr???
-*/
+
 body {
-    background-color: var(--navy-deep);
-    font-family: "Ethno";
-    margin: 0px;
-    padding: 0px;
-}
-
-#logo {
-    width: 150px;
-}
-
-#logo2 {
-	width: 90px;
-}
-
-#ps3_bg {
-    background-color: var(--pink);
-    padding-bottom: 1vw;
-}
-
-#coolass_mid {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin: 1%;
-    background-color: #ff0000;
-    height: 70vh;
-}
-
-#cool_part1 {
-    margin: 1%;
-    flex: 1;
-    background-color: #00ff00;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#cool_part2 {
-    margin: 1%;
-    flex: 1;
-    background-color: #0000ff;
-}
-
-#3dmodel_window {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-#title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#title h1 {
-    font-size: 3.5vw;
-    color: var(--blank);
-    transition: 0.5s ease;
-}
-
-#title h1:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 3px var(--magenta-deep);
-}
-
-#descrp {
-    width: 100%;
-}
-
-#descrp h1 {
-    font-size: 2vw;
-}
-
-#descrp h2 {
-    /* melhore essa coisa */
-    font-size: 1.2vw;
-    width: 80%;
-}
-
-.head_btn {
-    text-decoration: none;
-    color: var(--blank);
-    transition: 0.4s ease;
-	font-size: 20px;
-}
-
-.head_btn:hover {
-    color: var(--pink);
-    transform: scale(1.1);
-    display: inline-block;
+  background-color: var(--d-bg-color);
+  margin: 0;
+  padding: 0;
+  font-family: "HemiHead";
 }
 
 header {
-    background-color: var(--black);
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
+  background-color: var(--d-secondary-color);
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+header img {
+  width: 12%;
+  margin-left: 2%;
 }
 
-#course {
-	height: 80vh;
-	width: 95vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	margin: auto;
+header a {
+  text-decoration: none;
+  margin: 0 15px;
+  color: var(--d-text-body);
+  display: inline-block;
+  transition: 0.5s ease;
+  text-shadow: 0px 2px 2px var(--d-bg-color);
 }
 
-#course_txt {
-	width: 50%;
+header a:hover {
+  transform: scale(1.1);
 }
 
-#pages_menu {
-    width: 50%;
-    font-size: 1.5vw;
-    display: flex;
-    justify-content: space-between;
+header button {
+  margin-right: 2%
 }
 
-#cards {
-    display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 2rem;
-	height: 100vh;
-	margin-bottom: 5vh;
+.squareSlide {
+  margin: 0;
+  padding: 0;
+  height: 92vh;
+  
+  background-image:
+    linear-gradient(45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--d-secondary-color-alpha) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--d-secondary-color-alpha) 75%);
+  
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  background-color: var(--d-bg-color);
+  animation: diagonal-mov 4s linear infinite;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.cardy {
-    font-family: "HemiHead";
-    background-color: #ff0000;
-    display: flex;
-    flex-direction: column;
-    min-width: 20%;
-    width: 90%;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1vw;
-	height: 100%;
+@keyframes diagonal-mov {
+  from {
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0;
+  }
+  
+  to {
+    background-position: 60px 60px, 60px 90px, 90px 30px, 30px 60px;
+  }
 }
 
-.cardy img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
+.squareSlide img {
+  width: 30%;
+  height: 30%;
+  transition: 0.5s ease;
 }
 
-.cardy h3 {
-    font-size: 2em;
-	margin: 1%;
+.squareSlide img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0px 0px 3px var(--d-primary-color));
 }
 
-.cardy p {
-    font-size: 100%;
-    text-align: center;
-    width: 80%;
+#section_intro {
+  width: 95%;
+  height: 65%;
+  border-radius: 10px;
+  background-color: var(--d-secondary-color);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px 2px 0px var(--d-text-body);
+}
+
+#descrp {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#descrp h1 {
+  color: var(--d-text-body);
+  text-shadow: 0px 2px 2px var(--d-bg-color);
+}
+
+#descrp h2 {
+  color: var(--d-text-body);
+  font-size: 20px;
+  text-shadow: 0px 2px 2px var(--d-bg-color);
+  width: 80%;
+}
+
+
+#section_intro #spin3D {
+  width: 40%;
+  height: 100%;
+}
+
+#other_part {
+  width: 95vw;
+  height: 60vh;
+  margin: auto;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border-radius: 10px;
+  background-color: var(--d-secondary-color);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px 2px 0px var(--d-text-body);
+}
+
+#other_part #descrp {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#descrp p {
+  color: var(--d-text-body);
+  text-shadow: 0px 2px 2px var(--d-bg-color);
 }

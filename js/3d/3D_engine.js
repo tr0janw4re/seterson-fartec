@@ -12,8 +12,8 @@
 */
 
 const canvas = document.getElementById("3dproj");
-canvas.width = 240; //720
-canvas.height = 136; //408
+canvas.width = 240*2; //720
+canvas.height = 136*2; //408
 const ctx = canvas.getContext('2d');
 
 ctx.imageSmoothingEnabled = false;
@@ -349,8 +349,8 @@ function _update(deltaTime) {
 
 function _draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = colors["BLUE"];
-	ctx.fillRect(0,0,gameScreen.width,gameScreen.height);
+	//ctx.fillStyle = colors["BLUE"];
+	//ctx.fillRect(0,0,gameScreen.width,gameScreen.height);
 	ctx.fillStyle = "#FFFFFF";
 	geminiFloor(camera);
 	//drawLine(0,0,canvas.width,canvas.height);
