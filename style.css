@@ -34,11 +34,16 @@
     font-style: normal;
 }
 
+* {
+  margin: 0;
+}
+
 body {
   background-color: var(--d-bg-color);
   margin: 0;
   padding: 0;
   font-family: "HemiHead";
+  overflow-x: hidden;
 }
 
 header {
@@ -52,6 +57,12 @@ header {
 header img {
   width: 12%;
   margin-left: 2%;
+  transition: 0.2s ease-out;
+  filter: drop-shadow(0px 2px 2px var(--d-bg-color));
+}
+
+header img:hover {
+  transform: scale(1.05);
 }
 
 header a {
@@ -176,4 +187,151 @@ header button {
 #descrp p {
   color: var(--d-text-body);
   text-shadow: 0px 2px 2px var(--d-bg-color);
+}
+
+.cards-section {
+  width: 100%;
+  margin: 0;
+  max-width: 100vw;
+  overflow: hidden;
+  padding: 20px 0;
+  background-image:
+    linear-gradient(45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--d-secondary-color-alpha) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--d-secondary-color-alpha) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--d-secondary-color-alpha) 75%);
+  
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  background-color: var(--d-bg-color);
+  animation: diagonal-mov 4s linear infinite;
+}
+
+.cards-track {
+  display: flex;
+  gap: 20px;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.cards-track:active {
+  cursor: grabbing;
+}
+
+.cards {
+  min-width: 80vw;
+  height: 90vh;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: var(--d-primary-color);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 0px var(--d-text-body);
+}
+
+.cards::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  filter: blur(4px) brightness(50%);
+}
+
+.cards .card-img {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  z-index: 3;
+  width: 35%;
+  height: 42%;
+  border-radius: 30px;
+  background-size: cover;
+  box-shadow: 0px 4px 0px var(--d-bg-color);
+  margin: 3%;
+  transition: 0.3s ease;
+}
+
+.cards .card-img:hover {
+  transform: rotate(5deg) scale(1.1);
+  opacity: 85%;
+}
+
+.cards h2, .cards p {
+  position: relative;
+  z-index: 2;
+  color: var(--d-text-body);
+  text-shadow: 0px 2px 2px var(--d-secondary-color);
+}
+
+.cards h2 {
+  font-size: 4em;
+  transition: 0.2s ease-out;
+}
+
+.cards h2:hover {
+  transform: scale(1.05);
+}
+
+.cards p {
+  font-size: 1.5em;
+  width: 70%;
+  text-align: center;
+}
+
+#scratch::before {
+  background-image: url('./assets/images/cards/scratch.webp');
+}
+
+#music::before {
+  background-image: url('./assets/images/cards/music_game.png');
+}
+
+#hilocards::before {
+  background-image: url('./assets/images/cards/hilocards.png');
+}
+
+#temp::before {
+  background-image: url('./assets/images/cards/temp.jpg');
+}
+
+#vocal::before {
+  background-image: url('./assets/images/cards/vocacional.jpg');
+}
+
+#robot::before {
+  background-image: url('./assets/images/cards/robotica.jpg');
+}
+
+footer {
+  background-color: var(--d-secondary-color);
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  text-align: center;
+  color: var(--d-text-body);
+  text-shadow: 0px 2px 2px var(--d-bg-color);
+}
+
+footer img {
+  width: 9%;
+  margin-left: 3px;
+  padding: 0;
+  filter: drop-shadow(0px 2px 2px var(--d-bg-color));
 }
