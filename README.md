@@ -1,2 +1,0 @@
-# seterson
-site bomba
