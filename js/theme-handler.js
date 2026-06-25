@@ -4,9 +4,9 @@ const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
 	document.body.setAttribute('data-theme', savedTheme);
 	if (savedTheme==='dark') {
-		themeToggle.textContent = "* Light Mode";
+		themeToggle.textContent = "Light Mode";
 	} else {
-		themeToggle.textContent = ") Dark Mode";
+		themeToggle.textContent = "Dark Mode";
 	}
 } else {
 	document.body.setAttribute('data-theme', 'light');
@@ -18,10 +18,10 @@ themeToggle.addEventListener('click', () => {
 	let newTheme = 'light';
 	if (currTheme==='light') {
 		newTheme = 'dark';
-		themeToggle.textContent = "* Light Mode";
+		themeToggle.textContent = "Light Mode";
 	} else {
 		newTheme = 'dark';
-		themeToggle.textContent = ") Dark Mode";
+		themeToggle.textContent = "Dark Mode";
 		newTheme = 'light';
 	}
 
